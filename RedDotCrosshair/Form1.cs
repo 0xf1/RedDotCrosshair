@@ -30,10 +30,30 @@ namespace RedDotCrosshair
         private void Form1_Load(object sender, EventArgs e)
         {
             var path = new GraphicsPath();
-            this.Width = 4;
-            this.Height = 4;
-            this.Top = 537;
-            this.Left = 960;
+
+            if (!System.IO.File.Exists("opt_width"))
+            {
+                System.IO.File.WriteAllText("opt_width.txt", "6");
+            }
+            this.Width = Convert.ToInt32(System.IO.File.ReadAllText("opt_width.txt"));
+
+            if (!System.IO.File.Exists("opt_height"))
+            {
+                System.IO.File.WriteAllText("opt_height.txt", "6");
+            }
+            this.Height = Convert.ToInt32(System.IO.File.ReadAllText("opt_height.txt"));
+
+            if (!System.IO.File.Exists("opt_top.txt"))
+            {
+                System.IO.File.WriteAllText("opt_top.txt", "537");
+            }
+            this.Top = Convert.ToInt32(System.IO.File.ReadAllText("opt_top.txt"));
+
+            if (!System.IO.File.Exists("opt_left.txt"))
+            {
+                System.IO.File.WriteAllText("opt_left.txt", "960");
+            }
+            this.Left = Convert.ToInt32(System.IO.File.ReadAllText("opt_left.txt"));
 
 
             path.AddEllipse(0, 0, Width, Height);
